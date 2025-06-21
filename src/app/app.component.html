@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+    <h2 class="text-center mb-4">Counter App</h2>
+
+    <div class="text-center mb-3">
+      <h3 class="display-4" [@counterChange]="counter()">
+        {{ counter() }}
+      </h3>
+    </div>
+
+    <div class="row g-2 justify-content-center mb-4">
+      <div class="col-12 col-sm-4">
+        <button class="btn btn-success w-100" (click)="increment()">➕ Increment</button>
+      </div>
+      <div class="col-12 col-sm-4">
+        <button class="btn btn-warning w-100" (click)="decrement()">➖ Decrement</button>
+      </div>
+      <div class="col-12 col-sm-4">
+        <button class="btn btn-danger w-100" (click)="reset()">🔁 Reset</button>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+      <h5 class="mb-0">History</h5>
+      <button class="btn btn-outline-secondary btn-sm" (click)="clearHistory()">🗑️ Clear History</button>
+    </div>
+    @if( history().length === 0) {
+      <p class="text-muted text-center">No history available.</p>
+    }@else {
+      <ul class="list-group overflow-auto" style="max-height: 250px;">
+      @for (entry of history(); track $index) {
+        <li  class="list-group-item small">
+        {{ entry }}
+        </li>
+        }
+      </ul>
+    }
+    
+  </div>
+</div>
